@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CollApp.Classes
+{
+    public static class Globals
+    {
+        public static DateTime StartDate { get; set; }
+        public static DateTime EndDate { get; set; }
+
+    }
+}
