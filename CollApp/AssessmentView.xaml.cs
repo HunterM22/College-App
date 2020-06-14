@@ -12,24 +12,24 @@ using Xamarin.Forms.Xaml;
 namespace CollApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CourseView : ContentPage
+    public partial class AssessmentView : ContentPage
     {
-        public CourseView()
+        public AssessmentView()
         {
             InitializeComponent();
         }
 
-        private void ADDCOURSE_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddCourse());
-        }
-
-        private void EDITCOURSE_Clicked(object sender, EventArgs e)
+        private void ADDASSESSMENT_Clicked(object sender, EventArgs e)
         {
 
         }
 
-        private void DROPCOURSE_Clicked(object sender, EventArgs e)
+        private void EDITASSESSMENT_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DROPASSESSMENT_Clicked(object sender, EventArgs e)
         {
 
         }
@@ -40,10 +40,10 @@ namespace CollApp
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                con.CreateTable<Course>();
-                var Courses = con.Table<Course>().ToList();
+                con.CreateTable<Assessment>();
+                var Assess = con.Table<Assessment>().ToList();
 
-                CourseLV.ItemsSource = Courses;
+                AssessmentLV.ItemsSource = Assess;
 
             }
 

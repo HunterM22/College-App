@@ -4,26 +4,26 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CollApp.CourseView">
+             x:Class="CollApp.AssessmentView">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
-                     Clicked="ADDCOURSE_Clicked"/>
+                     Clicked="ADDASSESSMENT_Clicked"/>
         <ToolbarItem Text="Edit"
-                     Clicked="EDITCOURSE_Clicked"/>
+                     Clicked="EDITASSESSMENT_Clicked"/>
         <ToolbarItem Text="Drop"
-                     Clicked="DROPCOURSE_Clicked"/>
+                     Clicked="EDITASSESSMENT_Clicked"/>
 
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Image Source="WGUlogo.jpg" Margin="5,5,5,5" />
-        <Label Text="COURSES" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
+        <Label Text="ASSESSMENTS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" Margin="0,15,0,0" TextColor="#070E38" FontSize="Large" />
         <Switch IsToggled="false"
-                x:Name="CEnableNotifications" HorizontalOptions="Center"/>
-        <ListView x:Name="CourseLV">
+                x:Name="AEnableNotifications" HorizontalOptions="Center"/>
+        <ListView x:Name="AssessmentLV">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding CourseName}"                                                             
+                    <TextCell Text="{Binding Type}"                                                             
                               TextColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
