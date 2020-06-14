@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CollApp.Classes;
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -30,6 +32,21 @@ namespace CollApp
 
         private void DROPTERM_Clicked(object sender, EventArgs e)
         {
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                con.CreateTable<Term>();
+                var Terms = con.Table<Term>().ToList();
+
+                TermLV.ItemsSource = Terms;             
+                
+            }
 
         }
     }

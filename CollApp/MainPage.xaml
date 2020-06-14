@@ -14,9 +14,16 @@
                      Clicked="DROPTERM_Clicked"/>
 
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        <Image Source="WGUlogo.jpg" Margin="5,5,5,5" />
-        <Label Text="TERMS"/>
+        <StackLayout>
+            <Image Source="WGUlogo.jpg" Margin="5,5,5,5" />
+            <Label Text="TERMS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
+        <ListView x:Name="TermLV">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding TermName}"                                                             
+                              TextColor="Black"/>
+                </DataTemplate>                
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
-
-</ContentPage>
+    </ContentPage>
