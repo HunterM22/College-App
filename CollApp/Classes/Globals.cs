@@ -9,5 +9,7 @@ namespace CollApp.Classes
         public static DateTime StartDate { get; set; }
         public static DateTime EndDate { get; set; }
 
+        public static Term SelectedTerm { get; set; }
+
     }
 }

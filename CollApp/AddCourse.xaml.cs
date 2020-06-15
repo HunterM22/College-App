@@ -20,6 +20,16 @@ namespace CollApp
         public AddCourse()
         {
             InitializeComponent();
+
+            StatusPicker.Items.Add("Open");
+            StatusPicker.Items.Add("In Progress");
+            StatusPicker.Items.Add("Complete");
+
+            tbInst.Items.Add("Melissa Nicole");
+            tbInstPhone.Items.Add("216-931-1212");
+            tbInstEmail.Items.Add("professor@wgu.edu");
+            
+
         }
 
         private void CStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
@@ -43,7 +53,8 @@ namespace CollApp
                 Note = tbNotes.Text,
                 InstName = tbInst.ToString(), //picker
                 InstEmail = tbInstEmail.ToString(), //picker
-                InstPhone = tbInstPhone.ToString()
+                InstPhone = tbInstPhone.ToString(),
+                TermID = 1
             };
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))

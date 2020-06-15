@@ -27,12 +27,29 @@ namespace CollApp
 
         private void EDITTERM_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditTermPage());
+            Navigation.PushAsync(new EditTermPage(Globals.SelectedTerm));
         }
 
         private void DROPTERM_Clicked(object sender, EventArgs e)
         {
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                {
+                    con.CreateTable<Term>();
+                    int rows = con.Delete(Globals.SelectedTerm);
 
+                    if (rows > 0)
+                        DisplayAlert("Success", "Term Deleted", "Ok");
+                    else
+                        DisplayAlert("Failed", "Term Not Deleted", "Ok");
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            Navigation.PushAsync(new MainPage());
         }
 
         protected override void OnAppearing()
@@ -48,6 +65,29 @@ namespace CollApp
                 
             }
 
+        }
+
+        //public async void lvItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    var myListView = (ListView)sender;
+        //    var myItem = myListView.SelectedItem;
+
+        //}
+
+        private void VIEWCOURSES_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CourseView());
+        }
+
+        //private void TermLV_Tapped(object sender, EventArgs e)
+        //{
+        //    Globals.TermLVTapped = TermLV.SelectedItem.ToString();
+        //}
+
+        public void TermLV_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Globals.SelectedTerm = TermLV.SelectedItem as Term;
+            var SelectedTerm = TermLV.SelectedItem as Term;
         }
     }
 }
