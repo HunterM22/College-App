@@ -11,5 +11,9 @@ namespace CollApp.Classes
 
         public static Term SelectedTerm { get; set; }
 
+        public static Course SelectedCourse { get; set; }
+
+        
+
     }
 }

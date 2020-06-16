@@ -49,10 +49,10 @@ namespace CollApp
                 con.CreateTable<Term>();
                 int rows = con.Update(Globals.SelectedTerm);
 
-                //if (rows > 0)
-                //    DisplayAlert("Success", "Term Updated", "Ok");
-                //else
-                //    DisplayAlert("Failed", "Term Not Updated", "Ok");
+                if (rows > 0)
+                    DisplayAlert("Success", "Term Updated", "Ok");
+                else
+                    DisplayAlert("Failed", "Term Not Updated", "Ok");
             }
 
             Navigation.PushAsync(new MainPage());
