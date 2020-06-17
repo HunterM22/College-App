@@ -2,7 +2,7 @@
 Xamarin - View and Edit Terms, Classes, Class Details, and Assessments. Share notes and set notifications.
 
 ![image](https://user-images.githubusercontent.com/60014977/84618725-02e8cb80-aea1-11ea-8d87-122c903aa108.png)
-![image](https://user-images.githubusercontent.com/60014977/84855300-c698a500-b031-11ea-82ef-982ef1c03e48.png)
+![image](https://user-images.githubusercontent.com/60014977/84855378-0069ab80-b032-11ea-883a-44a1da366a59.png)
 
 Create and application within the Xamarin.Forms framework, and include all  of these features:
 
