@@ -6,16 +6,14 @@
              mc:Ignorable="d"
              x:Class="CollApp.CourseView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
-                     Clicked="ADDCOURSE_Clicked"/>
-        <ToolbarItem Text="Edit"
-                     Clicked="EDITCOURSE_Clicked"/>
-        <ToolbarItem Text="Drop"
-                     Clicked="DROPCOURSE_Clicked"/>
+        <ToolbarItem Text="Course Details"
+                     Clicked="ViewCourseDetails_Clicked"/>
+        <ToolbarItem Text="View Assessments"
+                     Clicked="ViewAssessments_Clicked"/>
 
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Image Source="WGUlogo.jpg" Margin="10,10,10,10" />
+        <Image Source="owl.jpg" Margin="10,10,10,10" />
         <Label Text="COURSES" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" Margin="0,0,0,0" TextColor="#070E38" FontSize="Large" />
         <Switch IsToggled="false"
@@ -25,6 +23,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding CourseName}"                                                             
+                              Detail="{Binding Status}"
                               TextColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>

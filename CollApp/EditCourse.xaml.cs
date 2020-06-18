@@ -24,17 +24,16 @@ namespace CollApp
             InitializeComponent();
 
             Globals.SelectedCourse = SelectedCourse;
-
-                                 
+        
             CName.Text = SelectedCourse.CourseName;
-            CStatusPicker.SelectedItem = SelectedCourse;
+            CStatusPicker.SelectedItem = (SelectedCourse.Status);
             CStart.Date = Convert.ToDateTime(SelectedCourse.Start);
             CEnd.Date = Convert.ToDateTime(SelectedCourse.End);
             CNotes.Text = SelectedCourse.Note;
-            CInst.SelectedItem = SelectedCourse.InstName;
-            CInstPhone.SelectedItem = SelectedCourse.InstPhone;
-            CInstEmail.SelectedItem = SelectedCourse.InstEmail;
-
+            CInst.Text = SelectedCourse.InstName;
+            CInstPhone.Text = SelectedCourse.InstPhone;
+            CInstEmail.Text = SelectedCourse.InstEmail;
+           
         }
 
         private void CStart_DateSelected(object sender, DateChangedEventArgs e)

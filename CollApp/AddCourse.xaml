@@ -7,6 +7,7 @@
              x:Class="CollApp.AddCourse">
     <ContentPage.Content>
         <StackLayout Margin="20,20,20,0">
+            <BoxView Color="LightBlue"/>
             <Entry Placeholder="Course Name" 
                    x:Name="tbCourseName"/>
             <Picker Title="Course Status" 
@@ -19,12 +20,12 @@
                         DateSelected="CEndDatePicker_DateSelected"/>
             <Editor Placeholder="Notes"
                     x:Name="tbNotes" Keyboard="Plain"/>
-            <BoxView />
-            <Picker Title="Course Instructor" 
+            <BoxView Color="LightBlue"/>
+            <Entry Placeholder="Course Instructor" 
                     x:Name="tbInst"/>
-            <Picker Title="Instructor Phone" 
+            <Entry Placeholder="Instructor Phone" 
                     x:Name="tbInstPhone"/>
-            <Picker Title="Instructor Email"
+            <Entry Placeholder="Instructor Email"
                     x:Name="tbInstEmail"/>
             <Button Text="SAVE"
                     Clicked="CSaveButton_Clicked"/>

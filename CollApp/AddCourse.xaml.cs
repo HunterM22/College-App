@@ -25,10 +25,9 @@ namespace CollApp
             StatusPicker.Items.Add("In Progress");
             StatusPicker.Items.Add("Complete");
 
-            tbInst.Items.Add("Melissa Nicole");
-            tbInstPhone.Items.Add("216-931-1212");
-            tbInstEmail.Items.Add("professor@wgu.edu");
-            
+            CStart = DateTime.Now.ToString();
+            CEnd = DateTime.Now.ToString();
+                       
 
         }
 
@@ -49,11 +48,11 @@ namespace CollApp
                 CourseName = tbCourseName.Text,
                 Start = CStart,
                 End = CEnd,
-                Status = StatusPicker.ToString(),  //Get pickers into string format? May need to create variable here
+                Status = StatusPicker.SelectedItem.ToString(),  //Get pickers into string format? May need to create variable here
                 Note = tbNotes.Text,
-                InstName = tbInst.ToString(), //picker
-                InstEmail = tbInstEmail.ToString(), //picker
-                InstPhone = tbInstPhone.ToString(),
+                InstName = tbInst.Text, //picker
+                InstEmail = tbInstEmail.Text, //picker
+                InstPhone = tbInstPhone.Text,
                 TermID = 1
             };
 

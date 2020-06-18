@@ -31,6 +31,24 @@ namespace CollApp
 
         private void DROPCOURSE_Clicked(object sender, EventArgs e)
         {
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                {
+                    con.CreateTable<Course>();
+                    int rows = con.Delete(Globals.SelectedCourse);
+
+                    if (rows > 0)
+                        DisplayAlert("Success", "Course Deleted", "Ok");
+                    else
+                        DisplayAlert("Failed", "Course Not Deleted", "Ok");
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            Navigation.PushAsync(new CourseView());
 
         }
 
@@ -55,6 +73,16 @@ namespace CollApp
         {
             Globals.SelectedCourse = CourseLV.SelectedItem as Course;
             var SelectedCourse = CourseLV.SelectedItem as Course;
+        }
+
+        private void ViewCourseDetails_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewAssessments_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

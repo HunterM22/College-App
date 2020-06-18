@@ -19,7 +19,7 @@
 
     </ContentPage.ToolbarItems>
         <StackLayout>
-            <Image Source="WGUlogo.jpg" Margin="5,5,5,5" />
+            <Image Source="owl.jpg" Margin="5,5,5,5" />
             <Label Text="TERMS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
         <ListView x:Name="TermLV" ItemSelected="TermLV_ItemSelected"> 
             <ListView.ItemTemplate>
