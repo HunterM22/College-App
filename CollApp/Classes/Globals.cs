@@ -13,6 +13,8 @@ namespace CollApp.Classes
 
         public static Course SelectedCourse { get; set; }
 
+        public static Assessment SelectedAssessment { get; set; }
+
         
 
     }

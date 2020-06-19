@@ -77,7 +77,7 @@ namespace CollApp
 
         private void ViewCourseDetails_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new CourseDetail(Globals.SelectedCourse));
         }
 
         private void ViewAssessments_Clicked(object sender, EventArgs e)

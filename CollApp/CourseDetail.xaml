@@ -7,13 +7,49 @@
              x:Class="CollApp.CourseDetail">
     
         <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Add"/>
             <ToolbarItem Text="Edit"/>
             <ToolbarItem Text="Drop"/>
         </ContentPage.ToolbarItems>
 
-        <StackLayout Margin="20,20,20,0">
-            
-       
-        </StackLayout>
+        <StackLayout Margin="20,10,20,0">
+            <Image Source="owl.jpg" Margin="10,10,10,10" />
+        <Label Text="Course Name" 
+               x:Name ="coursenamelabel"
+               FontSize="Title"
+               TextColor="DarkGoldenrod"
+               />
+        <Label Text="Status"
+               x:Name="statuslabel"
+               FontSize="Subtitle"
+               TextColor="Black"/>               
+        <Switch IsToggled="false"
+                x:Name="CEnableNotifications" HorizontalOptions="Center"/>
+        <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" 
+               Margin="0,0,0,0" FontSize="Subtitle"
+               TextColor="DarkGray"/>            
+        <Label Text="Start Date:" />
+        <Label Text="startdate" 
+               x:Name="startdatelabel"/>
+        <Label Text="End Date:" />
+        <Label Text="enddate"
+               x:Name="enddatelabel"/>                
+        <Button Text="View Assessments" Margin="20,20,20,20" 
+                Clicked="ViewAssessments_Clicked"/>
+        <Label Text="Notes:" 
+               FontSize="Large"/>
+        <Editor x:Name="noteseditor"
+                IsReadOnly="true"/>
+        
+        <Label Text="COURSE INSTRUCTOR:"
+                     TextDecorations="Underline"/>
+        <Label Text="Instructor Name"
+               x:Name="instructornamelabel"/>
+        <Label Text="Instructor Phone"
+               x:Name="instructorphonelabel"/>
+        <Label Text="Instructor Email"
+               x:Name="instructoremaillabel"/>
+
+
+
+    </StackLayout>
 </ContentPage>

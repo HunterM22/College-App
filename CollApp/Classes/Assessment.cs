@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CollApp.Classes
 {
-    class Assessment
+    public class Assessment
     {
         [PrimaryKey, AutoIncrement] public int AssessmentID { get; set; }
         public string CourseID { get; set; }

@@ -21,7 +21,7 @@ namespace CollApp
 
         private void ADDASSESSMENT_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new AddAssessment());
         }
 
         private void EDITASSESSMENT_Clicked(object sender, EventArgs e)
@@ -31,6 +31,24 @@ namespace CollApp
 
         private void DROPASSESSMENT_Clicked(object sender, EventArgs e)
         {
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                {
+                    con.CreateTable<Assessment>();
+                    int rows = con.Delete(Globals.SelectedAssessment);
+
+                    if (rows > 0)
+                        DisplayAlert("Success", "Assessment Deleted", "Ok");
+                    else
+                        DisplayAlert("Failed", "Assessment Not Deleted", "Ok");
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            Navigation.PushAsync(new AssessmentView());
 
         }
 
@@ -47,6 +65,12 @@ namespace CollApp
 
             }
 
+        }
+
+        private void AssessmentLV_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Globals.SelectedAssessment = AssessmentLV.SelectedItem as Assessment;
+            var SelectedAssessment = AssessmentLV.SelectedItem as Assessment;
         }
     }
 }
