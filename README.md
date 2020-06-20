@@ -1,6 +1,15 @@
 # College-App
 Xamarin - View and Edit Terms, Classes, Class Details, and Assessments. Share notes and set notifications.
 
+![image](https://user-images.githubusercontent.com/60014977/85192259-db727400-b28f-11ea-83c2-cd644e37df51.png)
+
+![image](https://user-images.githubusercontent.com/60014977/85192287-f218cb00-b28f-11ea-88f6-e499dd78be6e.png)
+
+![image](https://user-images.githubusercontent.com/60014977/85192327-18d70180-b290-11ea-9e5f-9c675ca6ec1d.png)
+
+![image](https://user-images.githubusercontent.com/60014977/85192347-2db39500-b290-11ea-9bbc-9c3ffacf8e2d.png)
+
+
 Create and application within the Xamarin.Forms framework, and include all  of these features:
 
       1.  Provide an interface for all  the following information for as many academic terms as needed:
