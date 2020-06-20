@@ -26,7 +26,7 @@
                 x:Name="CEnableNotifications" HorizontalOptions="Center"/>
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" 
                Margin="0,0,0,0" FontSize="Subtitle"
-               TextColor="DarkGray"/>            
+               TextColor="Black"/>            
         <Label Text="Start Date:" />
         <Label Text="startdate" 
                x:Name="startdatelabel"/>
@@ -35,13 +35,12 @@
                x:Name="enddatelabel"/>                
         <Button Text="View Assessments" Margin="20,20,20,20" 
                 Clicked="ViewAssessments_Clicked"/>
-        <Label Text="Notes:" 
-               FontSize="Large"/>
+        <Label Text="Notes:"/>
         <Editor x:Name="noteseditor"
                 IsReadOnly="true"/>
         
         <Label Text="COURSE INSTRUCTOR:"
-                     TextDecorations="Underline"/>
+                     TextDecorations="Underline" TextColor="Black"/>
         <Label Text="Instructor Name"
                x:Name="instructornamelabel"/>
         <Label Text="Instructor Phone"

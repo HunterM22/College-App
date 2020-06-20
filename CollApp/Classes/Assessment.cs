@@ -8,7 +8,7 @@ namespace CollApp.Classes
     public class Assessment
     {
         [PrimaryKey, AutoIncrement] public int AssessmentID { get; set; }
-        public string CourseID { get; set; }
+        public int CourseID { get; set; }
         public string Type { get; set; }
         public string Start { get; set; }
         public string End { get; set; }

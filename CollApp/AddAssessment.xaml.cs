@@ -21,6 +21,9 @@ namespace CollApp
         public AddAssessment()
         {
             InitializeComponent();
+
+            pickerAssessmentType.Items.Add("Objective Assessment");
+            pickerAssessmentType.Items.Add("Performance Assessment");
         }
 
         private void AStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
@@ -37,8 +40,8 @@ namespace CollApp
         {
             Assessment asmt = new Assessment()
             {
-                CourseID = pickerCourseID.ToString(),
-                Type = pickerAssessmentType.ToString(),
+                CourseID = Globals.SelectedCourse.CourseID,
+                Type = pickerAssessmentType.SelectedItem.ToString(),
                 Start = AStart,
                 End = AEnd
             };

@@ -11,12 +11,14 @@
         <ToolbarItem Text="Edit"
                      Clicked="EDITASSESSMENT_Clicked"/>
         <ToolbarItem Text="Drop"
-                     Clicked="EDITASSESSMENT_Clicked"/>
+                     Clicked="DROPASSESSMENT_Clicked"/>
 
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Image Source="owl.jpg" Margin="5,5,5,5" />
         <Label Text="ASSESSMENTS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
+        <Label Text="Course Name" TextColor="DarkGoldenrod" FontSize="Title" HorizontalOptions="Center"
+               x:Name="coursenamelabel"/>
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" Margin="0,15,0,0" TextColor="#070E38" FontSize="Large" />
         <Switch IsToggled="false"
                 x:Name="AEnableNotifications" HorizontalOptions="Center"/>

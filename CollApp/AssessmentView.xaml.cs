@@ -17,6 +17,7 @@ namespace CollApp
         public AssessmentView()
         {
             InitializeComponent();
+            coursenamelabel.Text = Globals.SelectedCourse.CourseName;
         }
 
         private void ADDASSESSMENT_Clicked(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace CollApp
 
         private void EDITASSESSMENT_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new EditAssessment(Globals.SelectedAssessment));
         }
 
         private void DROPASSESSMENT_Clicked(object sender, EventArgs e)
@@ -70,7 +71,6 @@ namespace CollApp
         private void AssessmentLV_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Globals.SelectedAssessment = AssessmentLV.SelectedItem as Assessment;
-            var SelectedAssessment = AssessmentLV.SelectedItem as Assessment;
         }
     }
 }
