@@ -18,6 +18,9 @@ namespace CollApp
         public static string AStart { get; set; }
         public static string AEnd { get; set; }
 
+        public static DateTime strt { get; set; }
+        public static DateTime nd { get; set; }
+
         public AddAssessment()
         {
             InitializeComponent();
@@ -29,15 +32,23 @@ namespace CollApp
         private void AStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             AStart = e.NewDate.ToString();
+            strt = e.NewDate;
         }
 
         private void AEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             AEnd = e.NewDate.ToString();
+            nd = e.NewDate;
         }
 
         private void ASaveButton_Clicked(object sender, EventArgs e)
         {
+            if (strt < nd)
+            {
+                DisplayAlert("Alert", "Assessment start date must be prior to assessment end date", "OK");
+                return;
+            }
+
             Assessment asmt = new Assessment()
             {
                 CourseID = Globals.SelectedCourse.CourseID,

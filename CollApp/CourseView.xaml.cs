@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,14 +60,11 @@ namespace CollApp
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
                 con.CreateTable<Course>();
-                con.Table<Course>().ToList();
-
                 var Courses = con.Table<Course>().ToList();
 
                 CourseLV.ItemsSource = Courses;
-
+              
             }
-
         }
 
         private void CourseLV_ItemSelected(object sender, SelectedItemChangedEventArgs e)

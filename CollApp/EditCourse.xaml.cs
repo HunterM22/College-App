@@ -48,6 +48,43 @@ namespace CollApp
 
         private void CSaveButton_Clicked(object sender, EventArgs e)
         {
+            if (CStart.Date < CEnd.Date)
+            {
+                DisplayAlert("Alert", "Course start date must be prior to course end date", "OK");
+                return;
+            }
+
+
+            if (String.IsNullOrEmpty(CInst.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Name", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(CInstEmail.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Email", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(CInstPhone.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Phone", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(CName.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Course Name", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(CStatusPicker.SelectedItem.ToString()))
+            {
+                DisplayAlert("Alert", "Please enter a value for Course Name", "OK");
+                return;
+            }
+
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
                 con.CreateTable<Course>();

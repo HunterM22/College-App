@@ -15,6 +15,8 @@ namespace CollApp
     {
         public static string TStart { get; set; }
         public static string TEnd { get; set; }
+        public static DateTime strt { get; set; }
+        public static DateTime nd { get; set; }
 
         public AddTermPage()
         {
@@ -24,15 +26,23 @@ namespace CollApp
         private void TStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             TStart = e.NewDate.ToString();
+            strt = e.NewDate;
         }
 
         private void TEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             TEnd = e.NewDate.ToString();
+            nd = e.NewDate;
         }
 
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
+            if (strt < nd)
+            {
+                DisplayAlert("Alert", "Term start date must be prior to term end date", "OK");
+                return;
+            }
+
             Term tm = new Term()
             {
                 TermName = tbTermName.Text,

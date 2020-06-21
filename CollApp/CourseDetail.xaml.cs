@@ -1,4 +1,5 @@
 ﻿using CollApp.Classes;
+using Plugin.LocalNotifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace CollApp
     public partial class CourseDetail : ContentPage
     {
         public CourseDetail(Course SelectedCourse)
-        {
+        { 
+
             InitializeComponent();
 
             Globals.SelectedCourse = SelectedCourse;
@@ -27,6 +29,7 @@ namespace CollApp
             instructornamelabel.Text = SelectedCourse.InstName;
             instructorphonelabel.Text = SelectedCourse.InstPhone;
             instructoremaillabel.Text = SelectedCourse.InstEmail;
+
         }
 
         private void ViewAssessments_Clicked(object sender, EventArgs e)

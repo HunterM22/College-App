@@ -17,6 +17,9 @@ namespace CollApp
         public static string CStart { get; set; }
         public static string CEnd { get; set; }
 
+        public static DateTime strt { get; set; }
+        public static DateTime nd { get; set; }
+
         public AddCourse()
         {
             InitializeComponent();
@@ -27,6 +30,9 @@ namespace CollApp
 
             CStart = DateTime.Now.ToString();
             CEnd = DateTime.Now.ToString();
+
+            strt = DateTime.Now;
+            nd = DateTime.Now;          
                        
 
         }
@@ -34,15 +40,53 @@ namespace CollApp
         private void CStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             CStart = e.NewDate.ToString();
+            strt = e.NewDate;
         }
 
         private void CEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             CEnd = e.NewDate.ToString();
+            nd = e.NewDate;
         }
 
         private void CSaveButton_Clicked(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(tbInst.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Name", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(tbInstEmail.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Email", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(tbInstPhone.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Instructor Phone", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(tbCourseName.Text))
+            {
+                DisplayAlert("Alert", "Please enter a value for Course Name", "OK");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(StatusPicker.SelectedItem.ToString()))
+            {
+                DisplayAlert("Alert", "Please enter a value for Course Name", "OK");
+                return;
+            }
+
+            if (strt < nd)
+            {
+                DisplayAlert("Alert", "Course start date must be prior to course end date", "OK");
+                return;
+            }
+
             Course crs = new Course()
             {
                 CourseName = tbCourseName.Text,
