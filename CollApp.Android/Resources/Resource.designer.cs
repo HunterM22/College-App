@@ -8373,7 +8373,7 @@ namespace CollApp.Droid
 			public const int plugin_lc_smallicon = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int share = 2131165302;
+			public const int shareicon = 2131165302;
 			
 			// aapt resource value: 0x7F070077
 			public const int tooltip_frame_dark = 2131165303;
