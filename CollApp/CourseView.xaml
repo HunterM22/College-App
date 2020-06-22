@@ -6,8 +6,12 @@
              mc:Ignorable="d"
              x:Class="CollApp.CourseView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Course"
+        <ToolbarItem Text="Add"
                      Clicked="ADDCOURSE_Clicked" />
+        <ToolbarItem Text="Edit"
+                     Clicked="EDITCOURSE_Clicked" />
+        <ToolbarItem Text="Drop"
+                     Clicked="DROPCOURSE_Clicked" />
         <ToolbarItem />
         <ToolbarItem Text="View Details"
                      Clicked="ViewCourseDetails_Clicked"/>

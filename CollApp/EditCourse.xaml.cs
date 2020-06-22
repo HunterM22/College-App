@@ -48,7 +48,7 @@ namespace CollApp
 
         private void CSaveButton_Clicked(object sender, EventArgs e)
         {
-            if (CStart.Date < CEnd.Date)
+            if (CStart.Date > CEnd.Date)
             {
                 DisplayAlert("Alert", "Course start date must be prior to course end date", "OK");
                 return;

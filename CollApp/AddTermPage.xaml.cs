@@ -37,7 +37,7 @@ namespace CollApp
 
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-            if (strt < nd)
+            if (strt > nd)
             {
                 DisplayAlert("Alert", "Term start date must be prior to term end date", "OK");
                 return;

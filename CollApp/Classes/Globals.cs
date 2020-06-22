@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CollApp.Classes
@@ -15,7 +16,10 @@ namespace CollApp.Classes
 
         public static Assessment SelectedAssessment { get; set; }
 
-        
+        public static string fileName = "college.db3";
+        public static  string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+        public static string completePath = Path.Combine(folderPath, fileName);
+
 
     }
 }

@@ -21,14 +21,22 @@ namespace CollApp
 
             Globals.SelectedCourse = SelectedCourse;
 
-            coursenamelabel.Text = SelectedCourse.CourseName;
-            statuslabel.Text = SelectedCourse.Status;
-            startdatelabel.Text = SelectedCourse.Start;
-            enddatelabel.Text = SelectedCourse.End;
-            noteseditor.Text = SelectedCourse.Note;
-            instructornamelabel.Text = SelectedCourse.InstName;
-            instructorphonelabel.Text = SelectedCourse.InstPhone;
-            instructoremaillabel.Text = SelectedCourse.InstEmail;
+            try
+            {
+                coursenamelabel.Text = SelectedCourse.CourseName;
+                statuslabel.Text = SelectedCourse.Status;
+                startdatelabel.Text = SelectedCourse.Start;
+                enddatelabel.Text = SelectedCourse.End;
+                noteseditor.Text = SelectedCourse.Note;
+                instructornamelabel.Text = SelectedCourse.InstName;
+                instructorphonelabel.Text = SelectedCourse.InstPhone;
+                instructoremaillabel.Text = SelectedCourse.InstEmail;
+            }
+            catch 
+            {
+                Navigation.PushAsync(new CourseView());
+                DisplayAlert("Alert", "Please select a course", "OK");
+            }
 
         }
 
@@ -37,5 +45,6 @@ namespace CollApp
             Navigation.PushAsync(new AssessmentView());
 
         }
+
     }
 }

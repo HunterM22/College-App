@@ -18,6 +18,7 @@ namespace CollApp
         public MainPage()
         {
             InitializeComponent();
+           
         }
 
         private void ADDTERM_Clicked(object sender, EventArgs e)
@@ -64,6 +65,7 @@ namespace CollApp
                 TermLV.ItemsSource = Terms;             
                 
             }
+            
 
         }
 

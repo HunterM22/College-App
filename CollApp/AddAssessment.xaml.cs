@@ -43,7 +43,7 @@ namespace CollApp
 
         private void ASaveButton_Clicked(object sender, EventArgs e)
         {
-            if (strt < nd)
+            if (strt > nd)
             {
                 DisplayAlert("Alert", "Assessment start date must be prior to assessment end date", "OK");
                 return;

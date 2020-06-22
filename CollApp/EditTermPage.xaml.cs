@@ -50,7 +50,7 @@ namespace CollApp
             Globals.SelectedTerm.Start = TStart;
             Globals.SelectedTerm.End = TEnd;
 
-            if (strt < nd)
+            if (strt > nd)
             {
                 DisplayAlert("Alert", "Term start date must be prior to term end date", "OK");
                 return;

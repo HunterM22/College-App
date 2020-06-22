@@ -14,7 +14,7 @@ namespace CollApp.Classes
 
         public Term()
         {
-
+            
         }
 
     }

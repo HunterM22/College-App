@@ -81,7 +81,7 @@ namespace CollApp
                 return;
             }
 
-            if (strt < nd)
+            if (strt > nd)
             {
                 DisplayAlert("Alert", "Course start date must be prior to course end date", "OK");
                 return;
@@ -97,7 +97,7 @@ namespace CollApp
                 InstName = tbInst.Text, //picker
                 InstEmail = tbInstEmail.Text, //picker
                 InstPhone = tbInstPhone.Text,
-                TermID = 1
+                TermID = Globals.SelectedTerm.TermID,
             };
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))

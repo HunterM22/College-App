@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,14 +57,29 @@ namespace CollApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                con.CreateTable<Course>();
-                var Courses = con.Table<Course>().ToList();
+                //con.CreateTable<Course>();
+                //var Courses = con.Table<Course>().ToList();
+                //CourseLV.ItemsSource = Courses;
 
-                CourseLV.ItemsSource = Courses;
-              
+                try
+                {
+                    var db = new SQLiteConnection(Globals.completePath);
+
+                    var Courselist = db.Query<Course>("SELECT * FROM Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';");
+
+                    var Courses = (Courselist.ToList());
+
+                    CourseLV.ItemsSource = Courses;
+                }
+                catch
+                {
+                    DisplayAlert("Alert", "Please select a term", "OK");
+                    Navigation.PushAsync(new MainPage());
+                }
             }
         }
 
