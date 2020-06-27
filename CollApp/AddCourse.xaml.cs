@@ -87,23 +87,38 @@ namespace CollApp
                 return;
             }
 
-            Course crs = new Course()
-            {
-                CourseName = tbCourseName.Text,
-                Start = CStart,
-                End = CEnd,
-                Status = StatusPicker.SelectedItem.ToString(),  //Get pickers into string format? May need to create variable here
-                Note = tbNotes.Text,
-                InstName = tbInst.Text, //picker
-                InstEmail = tbInstEmail.Text, //picker
-                InstPhone = tbInstPhone.Text,
-                TermID = Globals.SelectedTerm.TermID,
-            };
 
-            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            var db = new SQLiteConnection(Globals.completePath);
+
+            int Count = (db.Query<Course>("SELECT TermID from Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';")).Count;
+
+                    
+            if ( Count < 6 )
             {
-                con.CreateTable<Course>();
-                int rowsAdded = con.Insert(crs);
+                   Course crs = new Course()
+                {
+                    CourseName = tbCourseName.Text,
+                    Start = CStart,
+                    End = CEnd,
+                    Status = StatusPicker.SelectedItem.ToString(),  
+                    Note = tbNotes.Text,
+                    InstName = tbInst.Text, 
+                    InstEmail = tbInstEmail.Text, 
+                    InstPhone = tbInstPhone.Text,
+                    TermID = Globals.SelectedTerm.TermID,
+
+                };
+
+                using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+                {
+                    con.CreateTable<Course>();
+                    int rowsAdded = con.Insert(crs);
+                }
+            }
+            else
+            {
+                DisplayAlert("Alert", "Maximum of 6 courses per term has been exceeded. Cannot add course", "OK");
+                return;
             }
 
             Navigation.PushAsync(new CourseView());

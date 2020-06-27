@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace CollApp
 
             pickerAssessmentType.Items.Add("Objective Assessment");
             pickerAssessmentType.Items.Add("Performance Assessment");
+
         }
 
         private void AStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
@@ -49,18 +51,30 @@ namespace CollApp
                 return;
             }
 
-            Assessment asmt = new Assessment()
-            {
-                CourseID = Globals.SelectedCourse.CourseID,
-                Type = pickerAssessmentType.SelectedItem.ToString(),
-                Start = AStart,
-                End = AEnd
-            };
+            var db = new SQLiteConnection(Globals.completePath);
 
-            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            int PCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Performance Assessment' AND CourseID = '"+ Globals.SelectedCourse.CourseID +"' ;")).Count;
+            int OCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Objective Assessment' AND CourseID = '" + Globals.SelectedCourse.CourseID + "';")).Count;
+
+            if (PCount < 1 )
             {
-                con.CreateTable<Term>();
-                int rowsAdded = con.Insert(asmt);
+                if (OCount < 1)
+                {
+                    Assessment asmt = new Assessment()
+                    {
+                        Name = tbassessName.Text,
+                        CourseID = Globals.SelectedCourse.CourseID,
+                        Type = pickerAssessmentType.SelectedItem.ToString(),
+                        Start = AStart,
+                        End = AEnd
+                    };
+
+                    using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+                    {
+                        con.CreateTable<Assessment>();
+                        int rowsAdded = con.Insert(asmt);
+                    }
+                }
             }
 
             Navigation.PushAsync(new AssessmentView());

@@ -26,6 +26,10 @@ namespace CollApp
 
             Globals.SelectedAssessment = SelectedAssessment;
 
+            AssessmentTypePicker.Items.Add("Performance Assessment");
+            AssessmentTypePicker.Items.Add("Objective Assessment");
+
+            AName.Text = SelectedAssessment.Name;
             //AssessmentTypePicker = SelectedAssessment.Type.ToString(); <<<picker code
             Start.Date = Convert.ToDateTime(SelectedAssessment.Start);
             End.Date = Convert.ToDateTime(SelectedAssessment.End);
@@ -40,6 +44,7 @@ namespace CollApp
                 return;
             }
 
+            Globals.SelectedAssessment.Name = AName.ToString();
             Globals.SelectedAssessment.Type = AssessmentTypePicker.SelectedItem.ToString();
             Globals.SelectedAssessment.Start = AStart;
             Globals.SelectedAssessment.End = AEnd;

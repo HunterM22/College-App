@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollApp.Android", "CollApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollApp.iOS", "CollApp.iOS\CollApp.iOS.csproj", "{1F42189D-3163-4B11-A856-779B57882651}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollApp", "CollApp\CollApp.csproj", "{F1EB2200-4569-4971-BE60-51D4EEECF349}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollApp", "CollApp\CollApp.csproj", "{F1EB2200-4569-4971-BE60-51D4EEECF349}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

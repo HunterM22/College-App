@@ -7,6 +7,8 @@
              x:Class="CollApp.AddAssessment">
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,0">
+            <Entry Placeholder="Assessment Name"
+                   x:Name="tbassessName"/>
             <Picker Title="Assessment Type" 
                     x:Name="pickerAssessmentType"/>
             <DatePicker x:Name="AStartDatePicker"

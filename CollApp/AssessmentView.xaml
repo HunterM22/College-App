@@ -25,7 +25,7 @@
         <ListView x:Name="AssessmentLV" ItemSelected="AssessmentLV_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Type}"                                                             
+                    <TextCell Text="{Binding Name}"                                                             
                               TextColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>

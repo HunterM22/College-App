@@ -7,11 +7,11 @@
              x:Class="CollApp.CourseDetail">
     
         <ContentPage.ToolbarItems>
-            
+        <ToolbarItem Text="Edit"
+                     Clicked="EditCourse_Clicked"/>
         </ContentPage.ToolbarItems>
 
-        <StackLayout Margin="10,10,10,10">
-            <Image Source="owl.jpg" Margin="0,0,0,0" />
+        <StackLayout Margin="10,5,5,10">
         <Label Text="Course Name" 
                x:Name ="coursenamelabel"
                FontSize="Title"
@@ -32,14 +32,14 @@
         <Label Text="End Date:" />
         <Label Text="enddate"
                x:Name="enddatelabel"/>                
-        <Button Text="View Assessments" Margin="20,20,20,20" 
+        <Button Text="View Assessments" Margin="0"
                 Clicked="ViewAssessments_Clicked"/>
         <Label Text="Notes:"/>
-        <Image Source="shareicon.jpg" HorizontalOptions="End" HeightRequest="30" WidthRequest="30" />
         <Editor x:Name="noteseditor"
-                IsReadOnly="true"/>
-        
-        <Label Text="COURSE INSTRUCTOR:"
+                IsReadOnly="true" Margin="5"/>
+        <Button Text="Share Notes" x:Name="sharenotesbutton"
+                Clicked="sharenotesbutton_Clicked"/>
+        <Label Text="Course Instructor:"
                      TextDecorations="Underline" TextColor="Black"/>
         <Label Text="Instructor Name"
                x:Name="instructornamelabel"/>
@@ -47,8 +47,5 @@
                x:Name="instructorphonelabel"/>
         <Label Text="Instructor Email"
                x:Name="instructoremaillabel"/>
-
-
-
     </StackLayout>
 </ContentPage>

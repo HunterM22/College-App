@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,6 +45,31 @@ namespace CollApp
             Navigation.PushAsync(new AssessmentView());
 
         }
+
+        private void sharenotesbutton_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(noteseditor.Text))
+            {
+                DisplayAlert("Alert", "No notes exist. Please edit the course to add a note.", "OK");
+
+            }
+            else
+            {
+                Share.RequestAsync(Globals.SelectedCourse.Note.ToString());
+            }
+        }
+
+        private void EditCourse_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditCourse(Globals.SelectedCourse));
+        }
+
+        //private async Task ImageButton_ClickedAsync(object sender, EventArgs e)
+        //{
+
+        //    await Share.RequestAsync(Globals.SelectedCourse.Note.ToString());
+        //}
+
 
     }
 }

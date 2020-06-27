@@ -57,13 +57,35 @@ namespace CollApp
         {
             base.OnAppearing();
 
+            //using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            //{
+            //    con.CreateTable<Assessment>();
+            //    var Assess = con.Table<Assessment>().ToList();
+
+            //    AssessmentLV.ItemsSource = Assess;
+
+            //}
+
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                con.CreateTable<Assessment>();
-                var Assess = con.Table<Assessment>().ToList();
+                //con.CreateTable<Course>();
+                //var Courses = con.Table<Course>().ToList();
+                //CourseLV.ItemsSource = Courses;
 
-                AssessmentLV.ItemsSource = Assess;
+                try
+                {
+                    var db = new SQLiteConnection(Globals.completePath);
 
+                    var Assesslist = db.Query<Assessment>("SELECT * FROM Assessment WHERE CourseID = '" + Globals.SelectedCourse.CourseID + "';");
+
+                    var Courses = (Assesslist.ToList());
+
+                    AssessmentLV.ItemsSource = Courses;
+                }
+                catch
+                {
+                    return;
+                }
             }
 
         }
