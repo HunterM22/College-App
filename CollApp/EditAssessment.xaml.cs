@@ -20,17 +20,17 @@ namespace CollApp
         public static DateTime strt { get; set; }
         public static DateTime nd { get; set; }
 
+        public static string seltype { get; set; }
+
         public EditAssessment(Assessment SelectedAssessment)
         {
             InitializeComponent();
 
             Globals.SelectedAssessment = SelectedAssessment;
 
-            AssessmentTypePicker.Items.Add("Performance Assessment");
-            AssessmentTypePicker.Items.Add("Objective Assessment");
+            AssessmentTypePicker.Title = Globals.SelectedAssessment.Type.ToString();
 
-            AName.Text = SelectedAssessment.Name;
-            //AssessmentTypePicker = SelectedAssessment.Type.ToString(); <<<picker code
+            AName.Text = Globals.SelectedAssessment.Name;
             Start.Date = Convert.ToDateTime(SelectedAssessment.Start);
             End.Date = Convert.ToDateTime(SelectedAssessment.End);
 
@@ -44,15 +44,15 @@ namespace CollApp
                 return;
             }
 
-            Globals.SelectedAssessment.Name = AName.ToString();
-            Globals.SelectedAssessment.Type = AssessmentTypePicker.SelectedItem.ToString();
+            Globals.SelectedAssessment.Name = AName.Text;
+            Globals.SelectedAssessment.Type = Globals.SelectedAssessment.Type;
             Globals.SelectedAssessment.Start = AStart;
             Globals.SelectedAssessment.End = AEnd;
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                con.CreateTable<Term>();
-                int rows = con.Update(Globals.SelectedTerm);
+                con.CreateTable<Assessment>();
+                int rows = con.Update(Globals.SelectedAssessment);
 
                 if (rows > 0)
                     DisplayAlert("Success", "Assessment Updated", "Ok");
@@ -60,7 +60,7 @@ namespace CollApp
                     DisplayAlert("Failed", "Assessment Not Updated", "Ok");
             }
 
-            Navigation.PushAsync(new MainPage());
+            Navigation.PushAsync(new AssessmentView());
         }
 
         private void Start_DateSelected(object sender, DateChangedEventArgs e)
@@ -73,6 +73,44 @@ namespace CollApp
         {
             AEnd = e.NewDate.ToString();
             nd = e.NewDate;
+        }
+
+        public void AssessmentTypePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var db = new SQLiteConnection(Globals.completePath);
+
+            //int PCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Performance Assessment' AND CourseID = '" + Globals.SelectedCourse.CourseID + "' ;")).Count;
+            //int OCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Objective Assessment' AND CourseID = '" + Globals.SelectedCourse.CourseID + "';")).Count;
+
+
+            //if (PCount > 0)
+            //{
+            //    if (seltype is "Performance Assessment")
+            //    {
+            //        DisplayAlert("Alert", "Performance Assessment already exists for this course (Limit 1).", "OK");
+            //        AssessmentTypePicker.Title = Globals.SelectedAssessment.Type.ToString();
+            //        return;
+            //    }
+
+            //}
+            //if (OCount > 0)
+            //{
+            //    if (seltype is "Objective Assessment")
+            //    {
+            //        DisplayAlert("Alert", "Objective Assessment already exists for this course (Limit 1).", "OK");
+            //        AssessmentTypePicker.Title = Globals.SelectedAssessment.Type.ToString();
+            //        return;
+            //    }
+
+            //}
+
+            //seltype = (AssessmentTypePicker.Items[AssessmentTypePicker.SelectedIndex]).ToString();
+
+            //Globals.SelectedAssessment.Type = seltype;
+
+
+
+
         }
     }
 }

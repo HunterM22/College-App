@@ -1,5 +1,6 @@
 ﻿using CollApp.Classes;
 using Plugin.LocalNotifications;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,31 +15,40 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseDetail : ContentPage
     {
+        public static string CStart { get; set; }
+        public static string CEnd { get; set; }
         public CourseDetail(Course SelectedCourse)
-        { 
+        {
 
             InitializeComponent();
-
-            Globals.SelectedCourse = SelectedCourse;
+            
 
             try
             {
+
                 coursenamelabel.Text = SelectedCourse.CourseName;
                 statuslabel.Text = SelectedCourse.Status;
-                startdatelabel.Text = SelectedCourse.Start;
-                enddatelabel.Text = SelectedCourse.End;
+                startdatelabel.Text = CStart;
+                enddatelabel.Text = CEnd;
                 noteseditor.Text = SelectedCourse.Note;
                 instructornamelabel.Text = SelectedCourse.InstName;
                 instructorphonelabel.Text = SelectedCourse.InstPhone;
                 instructoremaillabel.Text = SelectedCourse.InstEmail;
+
+                Globals.SelectedCourse = SelectedCourse;
+                CStart = Convert.ToDateTime(Globals.SelectedCourse.Start).ToShortDateString();
+                CEnd = Convert.ToDateTime(Globals.SelectedCourse.End).ToShortDateString();
             }
-            catch 
+            catch
             {
-                Navigation.PushAsync(new CourseView());
                 DisplayAlert("Alert", "Please select a course", "OK");
+
+                Navigation.PushAsync(new CourseView());
             }
 
+            Navigation.PushAsync(new CourseView());
         }
+
 
         private void ViewAssessments_Clicked(object sender, EventArgs e)
         {

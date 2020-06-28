@@ -17,33 +17,38 @@ namespace CollApp
         public static string CourseStart { get; set; }
         public static string CourseEnd { get; set; }
 
-        
+               
         public EditCourse(Course SelectedCourse)
         {
 
             InitializeComponent();
 
-            Globals.SelectedCourse = SelectedCourse;
-        
-            CName.Text = SelectedCourse.CourseName;
-            CStatusPicker.SelectedItem = (SelectedCourse.Status);
-            CStart.Date = Convert.ToDateTime(SelectedCourse.Start);
-            CEnd.Date = Convert.ToDateTime(SelectedCourse.End);
-            CNotes.Text = SelectedCourse.Note;
-            CInst.Text = SelectedCourse.InstName;
-            CInstPhone.Text = SelectedCourse.InstPhone;
-            CInstEmail.Text = SelectedCourse.InstEmail;
            
+        
+            CName.Text = Globals.SelectedCourse.CourseName;
+            CStart.Date = Convert.ToDateTime(Globals.SelectedCourse.Start);
+            CEnd.Date = Convert.ToDateTime(Globals.SelectedCourse.End);
+            CNotes.Text = Globals.SelectedCourse.Note;
+            CInst.Text = Globals.SelectedCourse.InstName;
+            CInstPhone.Text = Globals.SelectedCourse.InstPhone;
+            CInstEmail.Text = Globals.SelectedCourse.InstEmail;
+            
+
+            CStatusPicker.Items.Add("Open");
+            CStatusPicker.Items.Add("In Progress");
+            CStatusPicker.Items.Add("Completed");
+            CStatusPicker.Title = Globals.SelectedCourse.Status.ToString();
+
         }
 
         private void CStart_DateSelected(object sender, DateChangedEventArgs e)
         {
-            CourseStart = e.NewDate.ToString();
+            Globals.SelectedCourse.Start = e.NewDate.ToString();
         }
 
         private void CEnd_DateSelected(object sender, DateChangedEventArgs e)
         {
-            CourseEnd = e.NewDate.ToString();
+            Globals.SelectedCourse.End = e.NewDate.ToString();
         }
 
         private void CSaveButton_Clicked(object sender, EventArgs e)
@@ -79,11 +84,16 @@ namespace CollApp
                 return;
             }
 
-            if (String.IsNullOrEmpty(CStatusPicker.SelectedItem.ToString()))
-            {
-                DisplayAlert("Alert", "Please enter a value for Course Name", "OK");
-                return;
-            }
+            
+
+            Globals.SelectedCourse.CourseName = CName.Text;
+            Globals.SelectedCourse.Start = Globals.SelectedCourse.Start;
+            Globals.SelectedCourse.End = Globals.SelectedCourse.End;
+            Globals.SelectedCourse.Note = CNotes.Text;
+            Globals.SelectedCourse.InstName =  CInst.Text;
+            Globals.SelectedCourse.InstPhone = CInstPhone.Text;
+            Globals.SelectedCourse.InstEmail =CInstEmail.Text;
+
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
@@ -97,6 +107,13 @@ namespace CollApp
             }
 
             Navigation.PushAsync(new CourseView());
+        }
+
+        private void CStatusPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string seltype = (CStatusPicker.Items[CStatusPicker.SelectedIndex]).ToString();
+            Globals.SelectedCourse.Status = seltype;
+
         }
     }
 }

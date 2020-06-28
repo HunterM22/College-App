@@ -8,7 +8,8 @@
     <ContentPage.Content>
         <StackLayout Margin="20,20,20,0">
             <Entry x:Name="CName"/>
-            <Picker x:Name="CStatusPicker"/>
+            <Picker x:Name="CStatusPicker"
+                    SelectedIndexChanged="CStatusPicker_SelectedIndexChanged"/>
             <Label Text="Start Date" />
              <DatePicker x:Name="CStart"
                         DateSelected="CStart_DateSelected"/>
@@ -16,7 +17,10 @@
             <DatePicker x:Name="CEnd"
                         DateSelected="CEnd_DateSelected"/>
             <Label Text="Enable Due Date Notifications" />
-            <Switch IsToggled="false" />
+            <Switch x:Name="CourseNotifications" IsToggled="false" 
+                    ThumbColor="Green"
+                    OnColor="SkyBlue"
+                   />
             <Editor Placeholder="Notes"
                     x:Name="CNotes" Keyboard="Plain"/>
             <BoxView />

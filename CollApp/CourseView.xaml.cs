@@ -16,6 +16,9 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseView : ContentPage
     {
+        public static string TStart { get; set; }
+        public static string TEnd { get; set; }
+
         public CourseView()
         {
             InitializeComponent();
@@ -57,14 +60,9 @@ namespace CollApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                //con.CreateTable<Course>();
-                //var Courses = con.Table<Course>().ToList();
-                //CourseLV.ItemsSource = Courses;
-
                 try
                 {
                     var db = new SQLiteConnection(Globals.completePath);
@@ -74,12 +72,18 @@ namespace CollApp
                     var Courses = (Courselist.ToList());
 
                     CourseLV.ItemsSource = Courses;
+
+                    TStart = Convert.ToDateTime(Globals.SelectedTerm.Start).ToShortDateString();
+                    TEnd = Convert.ToDateTime(Globals.SelectedTerm.End).ToShortDateString();
+                    Termname.Text = Globals.SelectedTerm.TermName;
+                    TermDates.Text = TStart + "-" + TEnd;
                 }
                 catch
                 {
                     DisplayAlert("Alert", "Please select a term", "OK");
                     Navigation.PushAsync(new MainPage());
                 }
+
             }
         }
 
@@ -91,7 +95,14 @@ namespace CollApp
 
         private void ViewCourseDetails_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CourseDetail(Globals.SelectedCourse));
+            if (Globals.SelectedCourse is null)
+            {
+                DisplayAlert("Alert", "Please select a Course", "OK");
+            }
+            else 
+            {
+                Navigation.PushAsync(new CourseDetail(Globals.SelectedCourse));
+            }
         }
 
         private void ViewAssessments_Clicked(object sender, EventArgs e)

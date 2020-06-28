@@ -16,27 +16,30 @@
                x:Name ="coursenamelabel"
                FontSize="Title"
                TextColor="DarkGoldenrod"
+               HorizontalTextAlignment="Center"
                />
         <Label Text="Status"
                x:Name="statuslabel"
                FontSize="Subtitle"
-               TextColor="Black"/>               
-        <Switch IsToggled="false"
-                x:Name="CEnableNotifications" HorizontalOptions="Center"/>
+               TextColor="Black"
+               HorizontalTextAlignment="Center"/>
+        <Label Text="" />
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" 
                Margin="0,0,0,0" FontSize="Subtitle"
-               TextColor="Black"/>            
-        <Label Text="Start Date:" />
+               TextColor="Black"/>
+        <Switch IsToggled="false"
+                x:Name="CEnableNotifications" HorizontalOptions="Center"/>
+        <Label Text="Start Date:" HorizontalTextAlignment="Center"/>
         <Label Text="startdate" 
-               x:Name="startdatelabel"/>
-        <Label Text="End Date:" />
+               x:Name="startdatelabel" HorizontalOptions="Center" FontSize="Large"/>
+        <Label Text="Due Date:" HorizontalTextAlignment="Center" />
         <Label Text="enddate"
-               x:Name="enddatelabel"/>                
+               x:Name="enddatelabel" HorizontalTextAlignment="Center" FontSize="Large"/>                
         <Button Text="View Assessments" Margin="0"
                 Clicked="ViewAssessments_Clicked"/>
-        <Label Text="Notes:"/>
+        <Label Text="Notes:" HorizontalTextAlignment="Center"/>
         <Editor x:Name="noteseditor"
-                IsReadOnly="true" Margin="5"/>
+                IsReadOnly="true" Margin="5" HorizontalOptions="Center"/>
         <Button Text="Share Notes" x:Name="sharenotesbutton"
                 Clicked="sharenotesbutton_Clicked"/>
         <Label Text="Course Instructor:"

@@ -10,7 +10,8 @@
             <Entry Placeholder="Assessment Name"
                    x:Name="tbassessName"/>
             <Picker Title="Assessment Type" 
-                    x:Name="pickerAssessmentType"/>
+                    x:Name="pickerAssessmentType"
+                   SelectedIndexChanged="pickerAssessmentType_SelectedIndexChanged"/>
             <DatePicker x:Name="AStartDatePicker"
                         DateSelected="AStartDatePicker_DateSelected"/>
             <DatePicker x:Name="AEndDatePicker"

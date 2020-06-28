@@ -18,7 +18,7 @@ namespace CollApp
         public MainPage()
         {
             InitializeComponent();
-           
+            
         }
 
         private void ADDTERM_Clicked(object sender, EventArgs e)
@@ -78,7 +78,15 @@ namespace CollApp
 
         private void VIEWCOURSES_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CourseView());
+            try
+            {
+                Navigation.PushAsync(new CourseView());
+            }
+            catch
+            {
+                DisplayAlert("Alert", "Please select a term", "OK");
+                Navigation.PushAsync(new MainPage());
+            }
         }
 
         //private void TermLV_Tapped(object sender, EventArgs e)

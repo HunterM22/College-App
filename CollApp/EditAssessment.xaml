@@ -9,7 +9,9 @@
         <StackLayout Margin="20,20,20,0">
             <Entry Placeholder=""
                    x:Name="AName"/>
-            <Picker x:Name="AssessmentTypePicker" />
+            <Picker x:Name="AssessmentTypePicker" 
+                    IsEnabled="False"
+                    SelectedIndexChanged="AssessmentTypePicker_SelectedIndexChanged"/>
             <DatePicker x:Name="Start"
                         DateSelected="Start_DateSelected"/>
             <DatePicker x:Name="End"

@@ -19,6 +19,9 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Image Source="owl.jpg" Margin="10,10,10,10" />
+        <Label x:Name ="Termname" FontSize="Large" TextColor="DarkGoldenrod" HorizontalTextAlignment="Center" />
+        <Label x:Name="TermDates" FontSize="Medium" TextColor="Black" HorizontalTextAlignment="Center"/>
+        <Label Text="" />
         <Label Text="COURSES" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
         <ListView x:Name="CourseLV"
                   ItemSelected="CourseLV_ItemSelected">

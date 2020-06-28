@@ -14,10 +14,12 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AssessmentView : ContentPage
     {
+        public static string AEnd { get; set; }
         public AssessmentView()
         {
             InitializeComponent();
-            coursenamelabel.Text = Globals.SelectedCourse.CourseName;
+            coursenamelabel.Text = Globals.SelectedCourse.CourseName;        
+
         }
 
         private void ADDASSESSMENT_Clicked(object sender, EventArgs e)
