@@ -65,18 +65,20 @@ namespace CollApp
             {
                 try
                 {
-                    var db = new SQLiteConnection(Globals.completePath);
+                    ///////var db = new SQLiteConnection(Globals.completePath);
 
-                    var Courselist = db.Query<Course>("SELECT * FROM Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';");
+                    var Courselist = con.Query<Course>("SELECT * FROM Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';");
 
                     var Courses = (Courselist.ToList());
 
                     CourseLV.ItemsSource = Courses;
 
-                    TStart = Convert.ToDateTime(Globals.SelectedTerm.Start).ToShortDateString();
-                    TEnd = Convert.ToDateTime(Globals.SelectedTerm.End).ToShortDateString();
+                    TStart = (Globals.SelectedTerm.Start).ToShortDateString();
+                    TEnd = (Globals.SelectedTerm.End).ToShortDateString();
                     Termname.Text = Globals.SelectedTerm.TermName;
-                    TermDates.Text = TStart + "-" + TEnd;
+                    TermDates.Text = TStart + "  -  " + TEnd;
+
+
                 }
                 catch
                 {

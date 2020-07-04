@@ -11,8 +11,8 @@ namespace CollApp.Classes
 
         public int TermID { get; set; }
         public string CourseName { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
         public string Note { get; set; }
         public string InstName { get; set; }
         public string InstPhone { get; set; }

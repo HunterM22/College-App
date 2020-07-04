@@ -20,7 +20,7 @@
     </ContentPage.ToolbarItems>
         <StackLayout>
             <Image Source="owl.jpg" Margin="5,10,5,5" />
-            <Label Text="TERMS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#000000"/>
+            <Label Text="TERMS" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="DarkGoldenrod"/>
         <ListView x:Name="TermLV" ItemSelected="TermLV_ItemSelected"> 
             <ListView.ItemTemplate>
                 <DataTemplate>

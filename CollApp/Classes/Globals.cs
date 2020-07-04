@@ -20,6 +20,10 @@ namespace CollApp.Classes
         public static  string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
         public static string completePath = Path.Combine(folderPath, fileName);
 
+        public static int AssessmentAlert = 0;
 
+        public static int CourseAlert = 0;
+
+        
     }
 }

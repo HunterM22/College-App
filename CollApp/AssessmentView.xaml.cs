@@ -1,4 +1,5 @@
 ﻿using CollApp.Classes;
+using Plugin.LocalNotifications;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,13 @@ namespace CollApp
     public partial class AssessmentView : ContentPage
     {
         public static string AEnd { get; set; }
+
+        public DateTime xyz { get; set; }
+
         public AssessmentView()
         {
             InitializeComponent();
-            coursenamelabel.Text = Globals.SelectedCourse.CourseName;        
+            coursenamelabel.Text = Globals.SelectedCourse.CourseName;
 
         }
 
@@ -29,7 +33,14 @@ namespace CollApp
 
         private void EDITASSESSMENT_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditAssessment(Globals.SelectedAssessment));
+            if (Globals.SelectedAssessment is null)
+            {
+                DisplayAlert("Alert", "Please select an assessment to edit", "Ok");
+            }
+            else
+            {
+                Navigation.PushAsync(new EditAssessment(Globals.SelectedAssessment));
+            }
         }
 
         private void DROPASSESSMENT_Clicked(object sender, EventArgs e)
@@ -59,30 +70,16 @@ namespace CollApp
         {
             base.OnAppearing();
 
-            //using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
-            //{
-            //    con.CreateTable<Assessment>();
-            //    var Assess = con.Table<Assessment>().ToList();
-
-            //    AssessmentLV.ItemsSource = Assess;
-
-            //}
-
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
             {
-                //con.CreateTable<Course>();
-                //var Courses = con.Table<Course>().ToList();
-                //CourseLV.ItemsSource = Courses;
-
                 try
                 {
-                    var db = new SQLiteConnection(Globals.completePath);
+                    var Assesslist = con.Query<Assessment>("SELECT * FROM Assessment WHERE CourseID = '" + Globals.SelectedCourse.CourseID + "';");
 
-                    var Assesslist = db.Query<Assessment>("SELECT * FROM Assessment WHERE CourseID = '" + Globals.SelectedCourse.CourseID + "';");
+                    var Asmt = (Assesslist.ToList());
 
-                    var Courses = (Assesslist.ToList());
+                    AssessmentLV.ItemsSource = Asmt;
 
-                    AssessmentLV.ItemsSource = Courses;
                 }
                 catch
                 {
@@ -96,5 +93,43 @@ namespace CollApp
         {
             Globals.SelectedAssessment = AssessmentLV.SelectedItem as Assessment;
         }
+
+        private void AEnableNotifications_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+                {
+                    var Assesslist = con.Query<Assessment>("SELECT * from Assessment;").ToList();
+
+                    if (Assesslist.Count > 0)
+                    {
+                        foreach (Assessment i in Assesslist)
+                        {
+                            if (i.Start == DateTime.Today)
+                            {
+                                CrossLocalNotifications.Current.Show("Alert", "You have an assessment starting today. Good luck!", 101, DateTime.Now.AddSeconds(0));
+                            }
+                        }
+
+                        foreach (Assessment k in Assesslist)
+                        {
+                            if (k.End == DateTime.Today)
+                            {
+                                CrossLocalNotifications.Current.Show("Reminder", "You have an assessment due today.", 101, DateTime.Now.AddSeconds(2));
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+        //private void AEnableNotifications_Toggled_1(object sender, ToggledEventArgs e)
+        //{
+
+        //}
     }
 }

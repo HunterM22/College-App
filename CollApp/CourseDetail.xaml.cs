@@ -21,11 +21,12 @@ namespace CollApp
         {
 
             InitializeComponent();
-            
+
+            CStart = SelectedCourse.Start.ToShortDateString();
+            CEnd = SelectedCourse.End.ToShortDateString();
 
             try
             {
-
                 coursenamelabel.Text = SelectedCourse.CourseName;
                 statuslabel.Text = SelectedCourse.Status;
                 startdatelabel.Text = CStart;

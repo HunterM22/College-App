@@ -20,14 +20,14 @@
         <Label Text="Course Name" TextColor="DarkGoldenrod" FontSize="Title" HorizontalOptions="Center"
                x:Name="coursenamelabel"/>
         <Label Text="Enable Due Date Notifications:" HorizontalTextAlignment="Center" Margin="0,15,0,0" TextColor="#070E38" FontSize="Large" />
-        <Switch IsToggled="false"
-                x:Name="AEnableNotifications" HorizontalOptions="Center"/>
+        <Switch IsToggled="False" x:Name="AEnableNotifications" HorizontalOptions="Center"
+                Toggled="AEnableNotifications_Toggled"/>
         <ListView x:Name="AssessmentLV" ItemSelected="AssessmentLV_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}"                                                             
                               TextColor="Black"
-                              Detail="{Binding End, StringFormat='{}{MM/dd/yyyy}'}"/>
+                              Detail="{Binding End, StringFormat='{0:MM/dd/yyyy}'}"/>
                    
                 </DataTemplate>
             </ListView.ItemTemplate>

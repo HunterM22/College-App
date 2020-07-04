@@ -14,8 +14,8 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCourse : ContentPage
     {
-        public static string CStart { get; set; }
-        public static string CEnd { get; set; }
+        public static DateTime CStart { get; set; }
+        public static DateTime CEnd { get; set; }
 
         public static DateTime strt { get; set; }
         public static DateTime nd { get; set; }
@@ -28,8 +28,8 @@ namespace CollApp
             StatusPicker.Items.Add("In Progress");
             StatusPicker.Items.Add("Complete");
 
-            CStart = DateTime.Now.ToString();
-            CEnd = DateTime.Now.ToString();
+            CStart = DateTime.Now;
+            CEnd = DateTime.Now;
 
             strt = DateTime.Now;
             nd = DateTime.Now;          
@@ -39,13 +39,13 @@ namespace CollApp
 
         private void CStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            CStart = e.NewDate.ToString();
+            CStart = e.NewDate;
             strt = e.NewDate;
         }
 
         private void CEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            CEnd = e.NewDate.ToString();
+            CEnd = e.NewDate;
             nd = e.NewDate;
         }
 
@@ -92,10 +92,10 @@ namespace CollApp
 
             int Count = (db.Query<Course>("SELECT TermID from Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';")).Count;
 
-                    
-            if ( Count < 6 )
+
+            if (Count < 6)
             {
-                   Course crs = new Course()
+                Course crs = new Course()
                 {
                     CourseName = tbCourseName.Text,
                     Start = CStart,

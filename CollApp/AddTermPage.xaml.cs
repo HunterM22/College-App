@@ -46,8 +46,8 @@ namespace CollApp
             Term tm = new Term()
             {
                 TermName = tbTermName.Text,
-                Start = TStart,
-                End = TEnd 
+                Start = Convert.ToDateTime(TStart),
+                End = Convert.ToDateTime(TEnd), 
             };
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))

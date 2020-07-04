@@ -47,8 +47,8 @@ namespace CollApp
         public void ETSaveButton_Clicked(object sender, EventArgs e)
         {
             Globals.SelectedTerm.TermName = etbTermName.Text;
-            Globals.SelectedTerm.Start = TStart;
-            Globals.SelectedTerm.End = TEnd;
+            Globals.SelectedTerm.Start = Convert.ToDateTime(TStart);
+            Globals.SelectedTerm.End = Convert.ToDateTime(TEnd);
 
             if (strt > nd)
             {

@@ -1,4 +1,5 @@
 ﻿using CollApp.Classes;
+using Java.Sql;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,11 @@ namespace CollApp
     public partial class AddAssessment : ContentPage
     {
 
-        public static string AStart { get; set; }
-        public static string AEnd { get; set; }
+        public static DateTime AStart { get; set; }
+        public static DateTime AEnd { get; set; }
 
-        public static DateTime strt { get; set; }
-        public static DateTime nd { get; set; }
+        //public static DateTime strt { get; set; }
+        //public static DateTime nd { get; set; }
 
         public static string seltype { get; set; }
 
@@ -34,23 +35,25 @@ namespace CollApp
             pickerAssessmentType.Title = "Pick Assessment Type";
             pickerAssessmentType.SelectedItem = null;
 
+            AStart = DateTime.Today;
+            AEnd = DateTime.Today;
+
+
         }
 
         private void AStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            AStart = e.NewDate.ToString();
-            strt = e.NewDate;
+            AStart = e.NewDate;
         }
 
         private void AEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            AEnd = e.NewDate.ToString();
-            nd = e.NewDate;
+            AEnd = e.NewDate;
         }
 
         private void ASaveButton_Clicked(object sender, EventArgs e)
         {
-            if (strt > nd)
+            if (AStart > AEnd)
             {
                 DisplayAlert("Alert", "Assessment start date must be prior to assessment end date", "OK");
                 return;
@@ -64,10 +67,10 @@ namespace CollApp
 
             var db = new SQLiteConnection(Globals.completePath);
 
-            int PCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Performance Assessment' AND CourseID = '"+ Globals.SelectedCourse.CourseID +"' ;")).Count;
+            int PCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Performance Assessment' AND CourseID = '" + Globals.SelectedCourse.CourseID + "' ;")).Count;
             int OCount = (db.Query<Assessment>("SELECT AssessmentID from Assessment WHERE Type = 'Objective Assessment' AND CourseID = '" + Globals.SelectedCourse.CourseID + "';")).Count;
 
-            
+
             if (PCount > 0)
             {
                 if (seltype is "Performance Assessment")
@@ -75,7 +78,7 @@ namespace CollApp
                     DisplayAlert("Alert", "Performance Assessment already exists for this course (Limit 1).", "OK");
                     return;
                 }
-                              
+
             }
             if (OCount > 0)
             {

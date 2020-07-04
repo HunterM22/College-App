@@ -14,8 +14,8 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditCourse : ContentPage
     {
-        public static string CourseStart { get; set; }
-        public static string CourseEnd { get; set; }
+        public static DateTime CourseStart { get; set; }
+        public static DateTime CourseEnd { get; set; }
 
                
         public EditCourse(Course SelectedCourse)
@@ -43,12 +43,12 @@ namespace CollApp
 
         private void CStart_DateSelected(object sender, DateChangedEventArgs e)
         {
-            Globals.SelectedCourse.Start = e.NewDate.ToString();
+            Globals.SelectedCourse.Start = e.NewDate;
         }
 
         private void CEnd_DateSelected(object sender, DateChangedEventArgs e)
         {
-            Globals.SelectedCourse.End = e.NewDate.ToString();
+            Globals.SelectedCourse.End = e.NewDate;
         }
 
         private void CSaveButton_Clicked(object sender, EventArgs e)
