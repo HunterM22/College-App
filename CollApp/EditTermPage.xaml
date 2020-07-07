@@ -9,9 +9,9 @@
         <StackLayout Margin="20,20,20,0">
             <Entry x:Name="etbTermName"/>
             <DatePicker x:Name="Start"
-                        DateSelected="eTStartDatePicker_DateSelected"/>
+                        DateSelected="eTStartDatePicker_DateSelected" Date="2020-07-06"/>
             <DatePicker x:Name="End"
-                        DateSelected="eTEndDatePicker_DateSelected"/>
+                        DateSelected="eTEndDatePicker_DateSelected" Date="2020-07-06"/>
             <Button Text="SAVE"
                     Clicked="ETSaveButton_Clicked"/>
         </StackLayout>

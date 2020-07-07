@@ -27,12 +27,12 @@ namespace CollApp
             StatusPicker.Items.Add("Open");
             StatusPicker.Items.Add("In Progress");
             StatusPicker.Items.Add("Complete");
+            
+            CStart = DateTime.Today;
+            CEnd = DateTime.Today;
 
-            CStart = DateTime.Now;
-            CEnd = DateTime.Now;
-
-            strt = DateTime.Now;
-            nd = DateTime.Now;          
+            strt = DateTime.Today;
+            nd = DateTime.Today;          
                        
 
         }

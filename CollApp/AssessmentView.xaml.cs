@@ -24,6 +24,11 @@ namespace CollApp
             InitializeComponent();
             coursenamelabel.Text = Globals.SelectedCourse.CourseName;
 
+            if (Globals.AssessmentAlert == 1)
+            {
+                AEnableNotifications.IsToggled = true;
+            }
+
         }
 
         private void ADDASSESSMENT_Clicked(object sender, EventArgs e)
@@ -98,6 +103,8 @@ namespace CollApp
         {
             if (e.Value)
             {
+                Globals.AssessmentAlert = 1;
+
                 using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
                 {
                     var Assesslist = con.Query<Assessment>("SELECT * from Assessment;").ToList();
@@ -108,24 +115,31 @@ namespace CollApp
                         {
                             if (i.Start == DateTime.Today)
                             {
-                                CrossLocalNotifications.Current.Show("Alert", "You have an assessment starting today. Good luck!", 101, DateTime.Now.AddSeconds(0));
+                                CrossLocalNotifications.Current.Show("Alert", "You have an assessment starting today. Good luck!", 101);
                             }
                         }
-
                         foreach (Assessment k in Assesslist)
                         {
                             if (k.End == DateTime.Today)
                             {
-                                CrossLocalNotifications.Current.Show("Reminder", "You have an assessment due today.", 101, DateTime.Now.AddSeconds(2));
+                                CrossLocalNotifications.Current.Show("Reminder", "You have an assessment due today.", 102);
                             }
-
+                        }
+                    if (Assesslist.Count < 1)
+                        {
+                            DisplayAlert("Success", "Alerts Enabled", "Ok");
                         }
 
                     }
-                }
 
+                }
+            }
+            if (!e.Value)
+            {
+                return;
             }
         }
+    
 
         //private void AEnableNotifications_Toggled_1(object sender, ToggledEventArgs e)
         //{

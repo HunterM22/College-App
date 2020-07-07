@@ -75,6 +75,11 @@ namespace CollApp
             Navigation.PushAsync(new EditCourse(Globals.SelectedCourse));
         }
 
+        //private void CEnableNotifications_Toggled(object sender, ToggledEventArgs e)
+        //{
+            
+        //}
+
         //private async Task ImageButton_ClickedAsync(object sender, EventArgs e)
         //{
 

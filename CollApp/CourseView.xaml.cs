@@ -1,4 +1,5 @@
 ﻿using CollApp.Classes;
+using Plugin.LocalNotifications;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,12 @@ namespace CollApp
         public CourseView()
         {
             InitializeComponent();
+
+
+            if (Globals.CourseAlert == 1)
+            {
+                EnableNotificationsC.IsToggled = true;
+            }
         }
 
         private void ADDCOURSE_Clicked(object sender, EventArgs e)
@@ -65,8 +72,6 @@ namespace CollApp
             {
                 try
                 {
-                    ///////var db = new SQLiteConnection(Globals.completePath);
-
                     var Courselist = con.Query<Course>("SELECT * FROM Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';");
 
                     var Courses = (Courselist.ToList());
@@ -110,6 +115,47 @@ namespace CollApp
         private void ViewAssessments_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void EnableNotificationsC_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                Globals.CourseAlert = 1;
+
+                using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+                {
+                    var Courselist = con.Query<Course>("SELECT * from Course;").ToList();
+
+                    if (Courselist.Count > 0)
+                    {
+                        foreach (Course i in Courselist)
+                        {
+                            if (i.Start == DateTime.Today)
+                            {
+                                CrossLocalNotifications.Current.Show("Alert", "You have a course starting today. Good luck!", 104);
+                            }
+                        }
+                        foreach (Course k in Courselist)
+                        {
+                            if (k.End == DateTime.Today)
+                            {
+                                CrossLocalNotifications.Current.Show("Reminder", "You have a course ending today.", 105);
+                            }
+                        }
+                        if (Courselist.Count < 1)
+                        {
+                            DisplayAlert("Success", "Alerts Enabled", "Ok");
+                        }
+
+                    }
+
+                }
+            }
+            if (!e.Value)
+            {
+                return;
+            }
         }
     }
 }
