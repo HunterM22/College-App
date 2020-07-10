@@ -12,7 +12,8 @@
                      Clicked="EDITASSESSMENT_Clicked"/>
         <ToolbarItem Text="Drop"
                      Clicked="DROPASSESSMENT_Clicked"/>
-
+        <ToolbarItem Text="Course List"
+                     Clicked="ViewCourses_Clicked"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Image Source="owl.jpg" Margin="5,5,5,5" />

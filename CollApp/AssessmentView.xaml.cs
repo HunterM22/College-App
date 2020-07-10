@@ -139,7 +139,12 @@ namespace CollApp
                 return;
             }
         }
-    
+
+        private void ViewCourses_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CourseView());
+        }
+
 
         //private void AEnableNotifications_Toggled_1(object sender, ToggledEventArgs e)
         //{

@@ -9,7 +9,9 @@
         <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit"
                      Clicked="EditCourse_Clicked"/>
-        </ContentPage.ToolbarItems>
+        <ToolbarItem Text="Course List"
+                     Clicked="CourseList_Clicked"/>
+    </ContentPage.ToolbarItems>
 
         <StackLayout Margin="10,5,5,10">
         <Label Text="Course Name" 

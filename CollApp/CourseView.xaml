@@ -8,13 +8,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
                      Clicked="ADDCOURSE_Clicked" />
-        <ToolbarItem Text="Edit"
-                     Clicked="EDITCOURSE_Clicked" />
         <ToolbarItem Text="Drop"
                      Clicked="DROPCOURSE_Clicked" />
-        <ToolbarItem />
-        <ToolbarItem Text="View Details"
+        <ToolbarItem Text="Course Details"
                      Clicked="ViewCourseDetails_Clicked"/>
+        <ToolbarItem Text="Term List"
+                     Clicked="TermList_Clicked"/>
+
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Image Source="owl.jpg" Margin="10,10,10,10" />

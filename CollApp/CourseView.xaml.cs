@@ -157,5 +157,10 @@ namespace CollApp
                 return;
             }
         }
+
+        private void TermList_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
     }
 }

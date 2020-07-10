@@ -4,6 +4,7 @@ using Plugin.LocalNotifications;
 using SQLite;
 using System;
 using System.Linq;
+using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,8 +33,8 @@ namespace CollApp
         protected override void OnStart()
         {//Notifications for Course start/end and Assessnment start/end
 
-            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
-            {
+           // using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+           // {
                 //con.CreateTable<Course>();
                 //var CourseStart = ((con.Query<Course>("SELECT * FROM Course WHERE TermID = '" + Globals.SelectedTerm.TermID + "';")).ToList()).Count;
 
@@ -41,9 +42,46 @@ namespace CollApp
 
                 //if (CourseStart > 0)
                 //    CrossLocalNotifications.Current.Show("Alert", "You have a new class starting today", 101, DateTime.Now.AddSeconds(5));
-               
-                    
+
+           // }
+
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                {
+                    int TCount = (con.Query<Term>("SELECT * from Term;")).Count;
+                }
+                catch       
+                {
+                    Globals.AddTermData();
+                }
             }
+
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                { 
+                    int CCount = (con.Query<Course>("SELECT * from Course;")).Count;
+                }
+                catch
+                {
+                    Globals.AddCourseData();
+                }
+            }
+
+            using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
+            {
+                try
+                {
+                    int ACount = (con.Query<Assessment>("SELECT * from Assessment;")).Count;
+                }
+                catch
+                {
+                    Globals.AddAssessmentData();
+                }
+            }
+
+
 
         }
 

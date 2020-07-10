@@ -14,7 +14,7 @@
                      Clicked="DROPTERM_Clicked"/>
         <ToolbarItem x:Name="emptyspace"
                      />
-        <ToolbarItem Text="View Details"
+        <ToolbarItem Text="View Courses"
                      Clicked="VIEWCOURSES_Clicked"/>     
 
     </ContentPage.ToolbarItems>

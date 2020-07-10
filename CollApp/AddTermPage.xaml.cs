@@ -13,25 +13,29 @@ namespace CollApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTermPage : ContentPage
     {
-        public static string TStart { get; set; }
-        public static string TEnd { get; set; }
+        public static DateTime TStart { get; set; }
+        public static DateTime TEnd { get; set; }
         public static DateTime strt { get; set; }
         public static DateTime nd { get; set; }
 
         public AddTermPage()
         {
             InitializeComponent();
+            TEnd = DateTime.Today;
+            TEnd = DateTime.Today;
+            strt = DateTime.Today;
+            nd = DateTime.Today;
         }
 
         private void TStartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            TStart = e.NewDate.ToString();
+            TStart = e.NewDate;
             strt = e.NewDate;
         }
 
         private void TEndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            TEnd = e.NewDate.ToString();
+            TEnd = e.NewDate;
             nd = e.NewDate;
         }
 
@@ -46,8 +50,8 @@ namespace CollApp
             Term tm = new Term()
             {
                 TermName = tbTermName.Text,
-                Start = Convert.ToDateTime(TStart),
-                End = Convert.ToDateTime(TEnd), 
+                Start = TStart,
+                End = TEnd, 
             };
 
             using (SQLiteConnection con = new SQLiteConnection(App.FilePath))
